@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block start %}
+<div class="container">
+    <h2 class="mb-5">All Criminal Records</h2>
+    <form action="">
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <input name="search" class="form-control" id="exampleFormControlInput1" placeholder="search criminals">
+        <button class="btn btn-primary" type="submit">Search</button>
+    </div>
+    </form>
+    <hr>
+    <table class="table table table-bordered mt-5" style="background-color: #e3f2fd;">
+        <thead>
+          <tr>
+            <th scope="col">Serial No.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Height(cm.)</th>
+            <th scope="col">Unique Identity</th>
+            <th scope="col">Crime Type</th>
+            <th scope="col">Crime Description</th>
+            <th scope="col">Criminal Image</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for record in records %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{record.criminal_name}}</td>
+            <td>{{record.age}}</td>
+            <td>{{record.height}}</td>
+            <td>{{record.unique_identity}}</td>
+            <td>{{record.crime_type}}</td>
+            <td>{{record.crime_desc | truncatechars:200}}</td>
+            <td><img src='media/{{record.criminal_image}}' style="height:100px; width:100px"></td>
+            <td>
+                <div class="d-grid gap-2">
+                <a href="update-record/{{record.id}}"><button class="btn btn-primary w-100" type="submit">Edit</button></a>
+                <a href="delete-record/{{record.id}}"><button class="btn btn-danger w-100" type="submit">Delete</button></a>
+                </div>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+</div>
+{% endblock %}

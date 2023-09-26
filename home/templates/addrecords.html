@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block start %}
+<div class="container">
+    {% block record_title %}
+    <h2 class="my-3">Add Criminal Records</h2>
+    {% endblock %}
+<form class="container p-5" style="background-color: #e3f2fd;" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row mb-5">
+        <div class="col-4">
+          <label for="exampleFormControlTextarea1" class="form-label">Criminal Name</label>
+          <input type="text" class="form-control" required name="criminal_name" value="{{records.criminal_name}}" placeholder="Criminal Name" aria-label="First name">
+        </div>
+        <div class="col">
+          <label for="exampleFormControlTextarea1" class="form-label">Age</label>
+          <input type="text" class="form-control" required name="age" value="{{records.age}}" placeholder="Age" aria-label="Age">
+        </div>
+        <div class="col">
+          <label for="exampleFormControlTextarea1" class="form-label">Height(cm.)</label>
+          <input type="text" class="form-control" required name="height" value="{{records.height}}" placeholder="Height(cm)" aria-label="Height">
+        </div>
+        <div class="col">
+          <label for="exampleFormControlTextarea1" class="form-label">Unique Identity</label>
+          <input type="text" class="form-control" name="unique_identity" value="{{records.unique_identity}}" aria-label="Skin Identity" placeholder="Body Scars">
+        </div>
+    </div>
+    <div class="row">
+    <div class="col-4">
+        <label for="validationCustom04" class="form-label">Crime Type</label>
+        <select class="form-select" name="crime_type" value="{{records.crime_type}}" id="validationCustom04">
+        <option selected disabled value="">Choose...</option>
+        <option>Theft</option>
+        <option>Robber</option>
+        <option>Murderer</option>
+        <option>Snatcher</option>
+        <option>Fraud</option>
+        <option>Harassement</option>
+        <option>Sexual Harassement</option>
+        <option>Drugs Smuggling</option>
+        <option>Women/Kid Smuggling</option>
+        <option>Kidnapping</option>
+        <option>Illegal Grabness</option>
+        <option>Illegal Business</option>
+        <option>Others</option>
+        </select>
+    </div>
+    <div class="col-8">
+        <label for="exampleFormControlTextarea1" class="form-label">Crime Description</label>
+        <textarea class="form-control" name="crime_desc" required id="exampleFormControlTextarea1" placeholder="Crime Description" rows="2">{{records.crime_desc}}</textarea>
+    </div>
+    <div class="col-12 mb-5">
+        <label for="exampleFormControlTextarea1" class="form-label">Criminal Image</label>
+        <input type="file" class="form-control" name="criminal_image" value="{{records.criminal_image}}" aria-label="Crime Image">
+    </div>
+    {% block record_form %}
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-success" type="submit">Add</button>
+    </div>
+    {% endblock %}
+    </div>
+  </form>
+</div>
+
+
+{% endblock %}
