@@ -1,2 +1,3 @@
 # Criminal_Management_System
-The project has been planned to be having the view of Criminal and their Crime. This project implemented by Python(Djnago).
+# CRUD
+The website gives view of criminal record where all record will be shown as a list. Admin can add, delete update & search criminal by their name. The project is implemented by python(Django).
